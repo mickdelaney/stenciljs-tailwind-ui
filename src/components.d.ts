@@ -6,56 +6,83 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ListBox {
+        "items": Array<string>;
+    }
+    interface ListBoxItem {
+        "item": string;
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "first": string;
-        /**
-          * The last name
-         */
         "last": string;
-        /**
-          * The middle name
-         */
         "middle": string;
+    }
+    interface TwHeader {
+        "color": string;
     }
 }
 declare global {
+    interface HTMLListBoxElement extends Components.ListBox, HTMLStencilElement {
+    }
+    var HTMLListBoxElement: {
+        prototype: HTMLListBoxElement;
+        new (): HTMLListBoxElement;
+    };
+    interface HTMLListBoxItemElement extends Components.ListBoxItem, HTMLStencilElement {
+    }
+    var HTMLListBoxItemElement: {
+        prototype: HTMLListBoxItemElement;
+        new (): HTMLListBoxItemElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLTwHeaderElement extends Components.TwHeader, HTMLStencilElement {
+    }
+    var HTMLTwHeaderElement: {
+        prototype: HTMLTwHeaderElement;
+        new (): HTMLTwHeaderElement;
+    };
     interface HTMLElementTagNameMap {
+        "list-box": HTMLListBoxElement;
+        "list-box-item": HTMLListBoxItemElement;
         "my-component": HTMLMyComponentElement;
+        "tw-header": HTMLTwHeaderElement;
     }
 }
 declare namespace LocalJSX {
+    interface ListBox {
+        "items"?: Array<string>;
+    }
+    interface ListBoxItem {
+        "item"?: string;
+    }
     interface MyComponent {
-        /**
-          * The first name
-         */
         "first"?: string;
-        /**
-          * The last name
-         */
         "last"?: string;
-        /**
-          * The middle name
-         */
         "middle"?: string;
     }
+    interface TwHeader {
+        "color"?: string;
+    }
     interface IntrinsicElements {
+        "list-box": ListBox;
+        "list-box-item": ListBoxItem;
         "my-component": MyComponent;
+        "tw-header": TwHeader;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "list-box": LocalJSX.ListBox & JSXBase.HTMLAttributes<HTMLListBoxElement>;
+            "list-box-item": LocalJSX.ListBoxItem & JSXBase.HTMLAttributes<HTMLListBoxItemElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "tw-header": LocalJSX.TwHeader & JSXBase.HTMLAttributes<HTMLTwHeaderElement>;
         }
     }
 }

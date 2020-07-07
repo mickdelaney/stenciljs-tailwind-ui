@@ -1,33 +1,41 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, State } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
-  styleUrl: 'my-component.css'
+  styleUrl: 'my-component.css',
+  shadow: false
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
+  
+  @Prop() 
+  first: string;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  @Prop() 
+  middle: string;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
+  @Prop() 
+  last: string;
+
+
+  @State()
+  items = [
+    'Liverpool',
+    'Manchester City',
+    'Leicester City'
+  ];
 
   private getText(): string {
     return format(this.first, this.middle, this.last);
   }
 
   render() {
-    return <div class={'m-6 shadow-class'}>
+    return <div class={'m-6 text-orange-600'}>
       Hello, World! I'm {this.getText()}
+
+      <list-box items={this.items}/>
+
+      
     </div>;
   }
 }
