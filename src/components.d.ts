@@ -7,18 +7,23 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ListBox {
-        "items": Array<string>;
+    }
+    interface ListBoxButton {
     }
     interface ListBoxItem {
         "item": string;
     }
-    interface MyComponent {
-        "first": string;
-        "last": string;
-        "middle": string;
+    interface ListBoxLabel {
     }
-    interface TwHeader {
-        "color": string;
+    interface ListBoxList {
+        "show": boolean;
+    }
+    interface ListBoxOption {
+        "option": string;
+    }
+    interface TwContainer {
+    }
+    interface TwPage {
     }
 }
 declare global {
@@ -28,53 +33,90 @@ declare global {
         prototype: HTMLListBoxElement;
         new (): HTMLListBoxElement;
     };
+    interface HTMLListBoxButtonElement extends Components.ListBoxButton, HTMLStencilElement {
+    }
+    var HTMLListBoxButtonElement: {
+        prototype: HTMLListBoxButtonElement;
+        new (): HTMLListBoxButtonElement;
+    };
     interface HTMLListBoxItemElement extends Components.ListBoxItem, HTMLStencilElement {
     }
     var HTMLListBoxItemElement: {
         prototype: HTMLListBoxItemElement;
         new (): HTMLListBoxItemElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLListBoxLabelElement extends Components.ListBoxLabel, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLListBoxLabelElement: {
+        prototype: HTMLListBoxLabelElement;
+        new (): HTMLListBoxLabelElement;
     };
-    interface HTMLTwHeaderElement extends Components.TwHeader, HTMLStencilElement {
+    interface HTMLListBoxListElement extends Components.ListBoxList, HTMLStencilElement {
     }
-    var HTMLTwHeaderElement: {
-        prototype: HTMLTwHeaderElement;
-        new (): HTMLTwHeaderElement;
+    var HTMLListBoxListElement: {
+        prototype: HTMLListBoxListElement;
+        new (): HTMLListBoxListElement;
+    };
+    interface HTMLListBoxOptionElement extends Components.ListBoxOption, HTMLStencilElement {
+    }
+    var HTMLListBoxOptionElement: {
+        prototype: HTMLListBoxOptionElement;
+        new (): HTMLListBoxOptionElement;
+    };
+    interface HTMLTwContainerElement extends Components.TwContainer, HTMLStencilElement {
+    }
+    var HTMLTwContainerElement: {
+        prototype: HTMLTwContainerElement;
+        new (): HTMLTwContainerElement;
+    };
+    interface HTMLTwPageElement extends Components.TwPage, HTMLStencilElement {
+    }
+    var HTMLTwPageElement: {
+        prototype: HTMLTwPageElement;
+        new (): HTMLTwPageElement;
     };
     interface HTMLElementTagNameMap {
         "list-box": HTMLListBoxElement;
+        "list-box-button": HTMLListBoxButtonElement;
         "list-box-item": HTMLListBoxItemElement;
-        "my-component": HTMLMyComponentElement;
-        "tw-header": HTMLTwHeaderElement;
+        "list-box-label": HTMLListBoxLabelElement;
+        "list-box-list": HTMLListBoxListElement;
+        "list-box-option": HTMLListBoxOptionElement;
+        "tw-container": HTMLTwContainerElement;
+        "tw-page": HTMLTwPageElement;
     }
 }
 declare namespace LocalJSX {
     interface ListBox {
-        "items"?: Array<string>;
-        "onSelected"?: (event: CustomEvent<string>) => void;
+    }
+    interface ListBoxButton {
     }
     interface ListBoxItem {
         "item"?: string;
         "onClicked"?: (event: CustomEvent<string>) => void;
     }
-    interface MyComponent {
-        "first"?: string;
-        "last"?: string;
-        "middle"?: string;
+    interface ListBoxLabel {
     }
-    interface TwHeader {
-        "color"?: string;
+    interface ListBoxList {
+        "show"?: boolean;
+    }
+    interface ListBoxOption {
+        "onItemSelected"?: (event: CustomEvent<string>) => void;
+        "option"?: string;
+    }
+    interface TwContainer {
+    }
+    interface TwPage {
     }
     interface IntrinsicElements {
         "list-box": ListBox;
+        "list-box-button": ListBoxButton;
         "list-box-item": ListBoxItem;
-        "my-component": MyComponent;
-        "tw-header": TwHeader;
+        "list-box-label": ListBoxLabel;
+        "list-box-list": ListBoxList;
+        "list-box-option": ListBoxOption;
+        "tw-container": TwContainer;
+        "tw-page": TwPage;
     }
 }
 export { LocalJSX as JSX };
@@ -82,9 +124,13 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "list-box": LocalJSX.ListBox & JSXBase.HTMLAttributes<HTMLListBoxElement>;
+            "list-box-button": LocalJSX.ListBoxButton & JSXBase.HTMLAttributes<HTMLListBoxButtonElement>;
             "list-box-item": LocalJSX.ListBoxItem & JSXBase.HTMLAttributes<HTMLListBoxItemElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "tw-header": LocalJSX.TwHeader & JSXBase.HTMLAttributes<HTMLTwHeaderElement>;
+            "list-box-label": LocalJSX.ListBoxLabel & JSXBase.HTMLAttributes<HTMLListBoxLabelElement>;
+            "list-box-list": LocalJSX.ListBoxList & JSXBase.HTMLAttributes<HTMLListBoxListElement>;
+            "list-box-option": LocalJSX.ListBoxOption & JSXBase.HTMLAttributes<HTMLListBoxOptionElement>;
+            "tw-container": LocalJSX.TwContainer & JSXBase.HTMLAttributes<HTMLTwContainerElement>;
+            "tw-page": LocalJSX.TwPage & JSXBase.HTMLAttributes<HTMLTwPageElement>;
         }
     }
 }
