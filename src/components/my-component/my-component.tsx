@@ -30,12 +30,15 @@ export class MyComponent {
   }
 
   render() {
+
     return <div class={'m-6 text-orange-600'}>
       Hello, World! I'm {this.getText()}
-
-      <list-box items={this.items}/>
-
-      
+      <list-box onSelected={ev => this.onItemSelected(ev)} items={this.items}/>
     </div>;
   }
+
+  private onItemSelected(event$: CustomEvent<string>) { 
+    console.log(event$.detail);
+  }
+  
 }

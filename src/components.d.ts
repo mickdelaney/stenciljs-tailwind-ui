@@ -56,9 +56,11 @@ declare global {
 declare namespace LocalJSX {
     interface ListBox {
         "items"?: Array<string>;
+        "onSelected"?: (event: CustomEvent<string>) => void;
     }
     interface ListBoxItem {
         "item"?: string;
+        "onClicked"?: (event: CustomEvent<string>) => void;
     }
     interface MyComponent {
         "first"?: string;
