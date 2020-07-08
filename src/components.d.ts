@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface ListBox {
+        "intro": string;
     }
     interface ListBoxButton {
     }
@@ -88,6 +89,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface ListBox {
+        "intro"?: string;
     }
     interface ListBoxButton {
     }

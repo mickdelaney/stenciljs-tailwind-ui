@@ -57,8 +57,4 @@ export class TwPage implements ComponentInterface {
       </Host>
     );
   }
-
-  private onItemSelected(event$: CustomEvent<string>) {
-    console.log(event$.detail);
-  }
 }

@@ -1,10 +1,6 @@
-import {
-  Component,
-  ComponentInterface,
-  h,
-  Host,
-  Listen,
-} from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
+
+import Tunnel from '../list-box-context';
 
 @Component({
   tag: 'list-box',
@@ -12,11 +8,30 @@ import {
   shadow: false,
 })
 export class ListBox implements ComponentInterface {
- 
+
+  @Prop() 
+  intro: string = 'Hello!';
+  @State() 
+  message: string = '';
+
+  count: number = 0;
+
+  increment = () => {
+    this.count = this.count + 1;
+    this.message = `${this.intro} ${this.count}`;
+  }
+
   render() {
+    const tunnelState = {
+      message: this.message,
+      increment: this.increment,
+    };
+
     return (
       <Host>
-        <slot></slot>    
+        <Tunnel.Provider state={tunnelState}>
+          <slot></slot>
+        </Tunnel.Provider>
       </Host>
     );
   }

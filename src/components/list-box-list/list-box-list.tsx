@@ -1,5 +1,7 @@
 import { Component, ComponentInterface, Host, h, Prop } from '@stencil/core';
 
+import Tunnel from '../list-box-context';
+
 @Component({
   tag: 'list-box-list',
   styleUrl: 'list-box-list.css',
@@ -11,10 +13,18 @@ export class ListBoxList implements ComponentInterface {
 
   render() {
     return (
-      <Host>        
-        <ul onFocusIn={e => console.log("focusin", e)}>
-          <slot></slot>
-        </ul>
+      <Host>   
+        <Tunnel.Consumer>
+          {({ message, increment }) => (
+            <div>
+              <h3>Message: {message}</h3>
+              <ul onFocusIn={() => increment() }>
+                <slot></slot>
+              </ul>
+            </div>
+         )}
+         </Tunnel.Consumer>
+
       </Host>
     );
   }

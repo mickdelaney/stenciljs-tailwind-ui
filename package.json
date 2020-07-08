@@ -36,5 +36,8 @@
     "env": {},
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "npm"
+  },
+  "dependencies": {
+    "@stencil/state-tunnel": "^1.0.1"
   }
 }
